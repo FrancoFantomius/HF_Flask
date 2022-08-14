@@ -7,6 +7,13 @@ pages = Blueprint("pages", __name__)
 def index():
     return render_template("index.html")
 
+@pages.route("/apps")
+def app_show():
+    return "WIP"
+
+@pages.route("/contact")
+def contact_us():
+    return "WIP"
 
 @pages.errorhandler(404)
 def pagenotfound(error):

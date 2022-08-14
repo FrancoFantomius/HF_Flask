@@ -32,7 +32,7 @@ def redir_signin():
     return redirect(url_for("login"))
 
 @HFauth.route("/signup", methods = ['GET', 'POST'])
-def register():
+def register():#                                        To be modified
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")

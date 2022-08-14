@@ -5,11 +5,11 @@ import flask_app.database as db
 #Blueprints
 from flask_app.HF_accounts import HFauth
 from flask_app.staticpages import pages
-
+from flask_app.api import API
 
 app.register_blueprint(HFauth, url_prefix="/accounts")
 app.register_blueprint(pages, url_prefix="/")
-
+app.register_blueprint(API, url_prefix="/api")
 
 
 if __name__=="__main__":
