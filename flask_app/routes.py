@@ -11,9 +11,6 @@ app.register_blueprint(HFauth, url_prefix="/accounts")
 app.register_blueprint(pages, url_prefix="/")
 
 
-@app.errorhandler(404)
-def pnf(error):
-    return render_template("404.html"), 404
 
 if __name__=="__main__":
     app.run()#debug=True)
