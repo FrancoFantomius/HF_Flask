@@ -17,4 +17,4 @@ def contact_us():
 
 @pages.errorhandler(404)
 def pagenotfound(error):
-    return render_template("index.html"), 404# NEED TO MODIFY WITH A 404 PAGE
+    return "404", 404# NEED TO MODIFY WITH A 404 PAGE

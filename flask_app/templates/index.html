@@ -1,8 +1,8 @@
-{% extedens "base.html" %}
+{% extends "base.html" %}
 {% block title %}HF - Home{% endblock %}
 {% block content %}
 
-<img src="{ url_for('static', 'code.svg') }">
+<img src="{{ url_for('static', filename = 'code.svg') }}">
 
 Coding on
 

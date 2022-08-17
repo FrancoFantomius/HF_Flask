@@ -1,6 +1,8 @@
 from datetime import datetime as dt
 import uuid as id
 import hashlib
+from flask_app.DB_Models import User, User_Computer
+from . import database
 
 utenti = None
 
@@ -57,12 +59,17 @@ def register(email:str, password:str, name:str, birth:str, type:str):
     In:
         email, password, name, birth, type
     Out:
-        True
+        user_info | Exception('Email already used')
     """
     HFid = newHFid()
-    terms = [HFid, email, s256(email + password), name, birth, dt.timestamp(dt.now()), type]
-    utenti.append_row(terms)
-    return HFid
+    user = User.querry.filter_by(email = email)
+    if user:
+        raise Exception("Email already used")
+    new_user = User(HFid = HFid, name = name, email = email, password_hash = s256(email + password), birth = birth, type = 0) #type 0 user is the normal user
+    database.session.add(new_user)
+    database.session.commit()
+    user_registered = User_Computer(HFid = HFid, name = name, email = email, birth = birth, type = 0)
+    return user_registered
 
 def login(email, password):
     """
@@ -70,17 +77,17 @@ def login(email, password):
     In:
         terms = [email, sha256(email + password)]
     Out:
-        HFId | False | True(matched email)
+        user_info | False | True(matched email)
     """
-    cella = utenti.find(email, in_column = 2)
-    if cella != None:
-        x = utenti.row_values(cella.row)
-        if x[2] == s256(email + password):
-            utenti.update_acell(('F' + str(cella.row)), dt.timestamp(dt.now()))
-            return x[0]
+    user = User.querry.filter_by(email = email).first()
+    if user and user.password_hash == s256(email + password):
+        user = User_Computer(HFid = user.HFid, name = user.name, email = email, birth = user.birth, type = user.type)
+        return user
+    elif user:
         return True
     return False
 
+'''
 def verify(HFid):
     """
     Checks if a user has a logged recently (max. 1 hour)
@@ -95,9 +102,9 @@ def verify(HFid):
         if dt.timestamp(dt.now()) - int(last_verified.value) < 3600:
             return True
     return False
-
+'''
 #PERSONALIZATION
-
+'''
 def get_info(HFid:str):
     """
     Returns the information of an account
@@ -125,3 +132,4 @@ def add_info(HFid:str, name:str, age:str):
         utenti.update(gspread.worksheet.rowcol_to_a1(cella.row, 4) + ":" + gspread.worksheet.rowcol_to_a1(cella.row, 5), [name, age])
         return True
     return False
+'''
