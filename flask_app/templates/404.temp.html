@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="404.css">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='Logo.gif') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='404.css') }}">
+        <title>404</title>
+    </head>
+    <body>
+        <style>
+            body{
+    background-image: linear-gradient(125deg,#6a89cc,#b8e994);
+    text-align: center;
+    padding: 5%;
+    padding-bottom: 50%;
+}
+
+.tit{
+    font-size: 150px;
+    font-family: "Pacifico", cursive;
+    background-image: linear-gradient(450deg,#ff0000,#6200ff);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.desk{
+    font-size: 20px;
+}
+
+.BT{
+    font-weight: bold;
+    border: 0px;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 2%;
+    position: bottom;
+    background-image: linear-gradient(450deg,#6200ff,#ff0000);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.BT:hover{
+    cursor: pointer;
+}
+        </style>
+        <h1 class="tit">404</h1>
+        <div class="desk">😱: Oh no! The content is not available</div>
+        <br><br>
+        <Button onclick="location.href='/'" class="BT">Home page</Button>
+    </body>
+</html>

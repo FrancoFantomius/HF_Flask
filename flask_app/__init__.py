@@ -1,15 +1,15 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 
 database = SQLAlchemy()
-db_name = "HF.db"
+db_name = "HFaccounts.db"
 
 def new_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = "5fc06346b4c608e9defd8f097313094e8d49ea3a0c74da535f64850cfacf4fd0"
+    app.config['SECRET_KEY'] = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_name}'
     database.init_app(app)
 
@@ -37,6 +37,11 @@ def new_app():
         return User.query.get(str(HFid))
 
     cors = CORS(app)
+
+    @app.errorhandler(404)
+    def pagenotfound(error):
+       return render_template("404.temp.html"), 404# NEED TO MODIFY WITH A 404 PAGE
+
 
     return app
 

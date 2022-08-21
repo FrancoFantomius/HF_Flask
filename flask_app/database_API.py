@@ -53,7 +53,7 @@ def s256(terms:str):
 
 #SECURITY
 
-def register(email:str, password:str, name:str, birth:str, type:str):
+def register(email:str, password:str, name:str, birth:str, type:int = 0):
     """
     Adds a user to the database and returns the relative HFid
     In:
@@ -62,13 +62,16 @@ def register(email:str, password:str, name:str, birth:str, type:str):
         user_info | Exception('Email already used')
     """
     HFid = newHFid()
-    user = User.querry.filter_by(email = email)
+    user = User.query.filter_by(email = email).first()
+    
     if user:
         raise Exception("Email already used")
+    
     new_user = User(HFid = HFid, name = name, email = email, password_hash = s256(email + password), birth = birth, type = 0) #type 0 user is the normal user
     database.session.add(new_user)
     database.session.commit()
-    user_registered = User_Computer(HFid = HFid, name = name, email = email, birth = birth, type = 0)
+    user_registered = User_Computer(id = HFid, name = name, email = email, birth = birth, type = 0)
+    
     return user_registered
 
 def login(email, password):
@@ -79,9 +82,9 @@ def login(email, password):
     Out:
         user_info | False | True(matched email)
     """
-    user = User.querry.filter_by(email = email).first()
+    user = User.query.filter_by(email = email).first()
     if user and user.password_hash == s256(email + password):
-        user = User_Computer(HFid = user.HFid, name = user.name, email = email, birth = user.birth, type = user.type)
+        user = User_Computer(id = user.HFid, name = user.name, email = email, birth = user.birth, type = user.type)
         return user
     elif user:
         return True

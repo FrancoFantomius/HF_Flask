@@ -12,7 +12,7 @@ class User(database.Model, UserMixin):
 
 
 class User_Computer(database.Model, UserMixin):
-    HFid = database.Column(database.String(50), primary_key = True)
+    id = database.Column(database.String(50), primary_key = True)
     name = database.Column(database.String(250))
     email = database.Column(database.String(250), unique = True)
     birth = database.Column(database.String(50))

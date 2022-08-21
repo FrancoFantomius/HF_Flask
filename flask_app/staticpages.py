@@ -14,7 +14,3 @@ def app_show():
 @pages.route("/contact")
 def contact_us():
     return "WIP"
-
-@pages.errorhandler(404)
-def pagenotfound(error):
-    return "404", 404# NEED TO MODIFY WITH A 404 PAGE
