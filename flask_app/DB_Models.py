@@ -1,6 +1,6 @@
+import warnings
 from . import database
 from flask_login import UserMixin
-from sqlalchemy.sql import func
 
 class User(database.Model, UserMixin):
     HFid = database.Column(database.String(50), primary_key=True)
