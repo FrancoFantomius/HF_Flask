@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'PageNotFoundLarge.css')}}" media="screen and (min-width: 1100px)">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'PageNotFound.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'PageNotFoundSmall.css')}}" media="screen and (max-width: 900px)">
+{% endblock %}
+{% block title %}HF - 404{% endblock %}
+
+{% block content %}
+
+<h1 class="h404">
+    404
+</h1>
+<p>
+    Sorry, we have not found what you were looking for.
+</p>
+<button onclick="window.location.href='/'" class="returnhome">
+    Back to home
+</button>
+
+{% endblock %}

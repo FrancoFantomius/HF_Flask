@@ -40,13 +40,10 @@ def new_app():
 
     @app.errorhandler(404)
     def pagenotfound(error):
-       return render_template("404.temp.html"), 404# NEED TO MODIFY WITH A 404 PAGE
+       return render_template("PageNotFound.html"), 404# NEED TO MODIFY WITH A 404 PAGE
 
 
     return app
-
-
-
 
 
 def create_database(app):

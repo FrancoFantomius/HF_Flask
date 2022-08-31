@@ -1,0 +1,23 @@
+body{
+    text-align: center;
+}
+
+.h404{
+    padding: 0px;
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 256px;
+    margin: 60px;
+}
+
+p{
+    font-size: 25px;
+}
+
+.returnhome{
+    width: 20%;
+    height: 50px;
+    border-radius: 40px;
+    background: #FF8A00;
+    color: white;
+    font-size: 20px;
+}

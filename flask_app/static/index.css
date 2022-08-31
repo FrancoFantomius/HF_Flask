@@ -1,0 +1,47 @@
+.show-img{
+    width: 65%;
+    background: #104EC8;
+    border-radius: 40px;
+    border: 1px solid black;
+    margin: 20px;
+    margin-top: 30px;
+}
+
+.show-desc{
+    position: absolute;
+    background: #FF8A00;
+    width: 370px;
+    height: 375px;
+    border: 1px solid black;
+    top: 25%;
+    right: 0%;
+    margin-right: 20px;
+    padding: 2.5%;
+}
+
+.show-title{
+    color: black;
+}
+
+.show-text{
+    text-align: justify;
+    font-size: large;
+    color: black;
+}
+
+.show-desc:hover .show-arrow{
+    fill: #3274ff;
+    transition: 250ms;
+}
+
+.show-desc:hover{
+    text-decoration: underline;
+}
+
+.show-arrow{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 45px;
+    fill: black;
+}

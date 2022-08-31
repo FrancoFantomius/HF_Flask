@@ -1,0 +1,12 @@
+.show-img{
+    margin: 2.5%;
+    margin-top: 5%;
+    width: 1000px;
+    height: 500px;
+}
+
+.show-desc{
+    position: absolute;
+    top: 27.5%;
+    right: 5%;
+}

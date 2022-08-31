@@ -1,9 +1,24 @@
 {% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'index.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'index-small.css')}}" media="screen and (max-width: 700px)">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'index-large.css')}}" media="screen and (min-width: 1000px)">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'index-xlarge.css')}}" media="screen and (min-width: 1300px)">
+{% endblock %}
 {% block title %}HF - Home{% endblock %}
+
 {% block content %}
-
-<img src="{{ url_for('static', filename = 'code.svg') }}">
-
-Coding on
-
+<img src="{{ url_for('static', filename = 'main-img.jpg')}}" class="show-img">
+<div class="show-desc" onclick="window.location.href='https://www.google.com'">
+    <h1 class="show-title">
+        Questa è una prova
+    </h1>
+    <p class="show-text">
+        La prova di oggi è incentrata sul creare una pagina home con css e html. Prossimamente espanderemo e miglioreremo questo sito con post.
+    </p>
+    <svg class="show-arrow" width="75" height="75" viewBox="0 0 75 75" xmlns="http://www.w3.org/2000/svg">
+        <path d="M37.5 12.5L33.0938 16.9063L50.5313 34.375H12.5V40.6251H50.5313L33.0938 58.0938L37.5 62.5001L62.5001 37.5L37.5 12.5Z"/>
+    </svg>
+</div>
 {% endblock %}
